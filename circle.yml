@@ -26,12 +26,13 @@ dependencies:
 general:
    artifacts:
      - $CIRCLE_TEST_REPORTS
-     - JavaHonkEARModule/target/*.ear
-     - JavaHonkJARModule/target/*.jar
-     - JavaHonkWARModule/target/*.war
+     - $CIRCLE_ARTIFACTS
 
 ## Configuring test     
 test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+    - mv JavaHonkEARModule/target/*.ear $CIRCLE_ARTIFACTS/
+    - mv JavaHonkJARModule/target/*.jar $CIRCLE_ARTIFACTS/
+    - mv JavaHonkWARModule/target/*.war $CIRCLE_ARTIFACTS/
