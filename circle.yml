@@ -16,7 +16,7 @@ machine:
 ## Configuring custom dependencies
 dependencies:
   override:
-    - mvn --fail-never dependency:go-offline || true
+    - mvn install
 
   pre:
     - wget https://repo.eclipse.org/content/repositories/egit-releases/org/eclipse/mylyn/github/org.eclipse.mylyn.github.core/3.1.0.201310021548-r/org.eclipse.mylyn.github.core-3.1.0.201310021548-r.jar
@@ -30,8 +30,6 @@ general:
 
 ## Configuring test     
 test:
-  override:
-    - mvn install
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
