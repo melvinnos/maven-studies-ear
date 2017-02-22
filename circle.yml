@@ -26,9 +26,9 @@ dependencies:
 general:
    artifacts:
      - $CIRCLE_TEST_REPORTS
-     - JavaHonkEARModule/target
-     - JavaHonkJARModule/target
-     - JavaHonkWARModule/target
+     - JavaHonkEARModule/target/*.ear
+     - JavaHonkJARModule/target/*.jar
+     - JavaHonkWARModule/target/*.war
 
 ## Configuring test     
 test:
